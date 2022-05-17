@@ -1,8 +1,10 @@
 import ethers from "ethers";
 import axios from "axios";
 import BigNumberjs from "bignumber.js";
-import bip39 from "bip39"
+import bip39 from "bip39";
 
+import pkg from 'ethereumjs-wallet';
+const { hdkey } = pkg;
 async function main() {
   const mnemonic = bip39.generateMnemonic(256)
   console.log(mnemonic)
@@ -25,7 +27,7 @@ async function main() {
   // const hdNode1 = await ethers.utils.HDNode.fromMnemonic(mnemonic)
   // console.log(hdNode1)
 
-  const testNode  = await ethers.utils.HDNode.fromMnemonic(mnemonic, 'test123', null);
+  const testNode  = await ethers.utils.HDNode.fromMnemonic(mnemonic);
   console.log(testNode)
 
   const paths = await testNode.path
@@ -43,6 +45,22 @@ async function main() {
   //   console.log("i=", i)
   //   console.log(testNode4)
   // }
+
+  // gen with ethjs-wallet
+  const seed1 = await bip39.mnemonicToSeed(mnemonic)
+  console.log(seed1)
+  const hdWallet = hdkey.fromMasterSeed(seed)
+  console.log(hdWallet)
+  const hdPathString = "m/44'/60'/0'/0"
+  var root = hdWallet.derivePath(hdPathString)
+  const child = root.deriveChild(0)
+  const wallet = child.getWallet()
+  console.log(wallet)
+
+  const public1 = wallet.getAddress().toString('hex')
+  console.log(public1)
+
+  //can be checked here https://danfinlay.github.io/mnemonic-account-generator/
 }
 
 main();

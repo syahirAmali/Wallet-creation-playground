@@ -6,6 +6,9 @@ import bip39 from "bip39";
 import pkg from 'ethereumjs-wallet';
 const { hdkey } = pkg;
 async function main() {
+  let derivationPath = "m/44'/60'/0'/0";
+  const hdPathString = "m/44'/60'/0'/0"
+
   const mnemonic = bip39.generateMnemonic(256)
   console.log(mnemonic)
 
@@ -27,16 +30,16 @@ async function main() {
   // const hdNode1 = await ethers.utils.HDNode.fromMnemonic(mnemonic)
   // console.log(hdNode1)
 
-  const testNode  = await ethers.utils.HDNode.fromMnemonic(mnemonic);
+  const testNode  = await ethers.utils.HDNode.fromMnemonic(mnemonic).derivePath(derivationPath);
   console.log(testNode)
 
   const paths = await testNode.path
   console.log(paths)
 
-  const testNode2  = await testNode.derivePath("1")
+  const testNode2  = await testNode.derivePath("0")
   console.log(testNode2)
 
-  const testNode3  = await testNode.derivePath("2")
+  const testNode3  = await testNode.derivePath("1")
   console.log(testNode3)
 
   // for(let i = 0; i < 100000; i++){
@@ -51,9 +54,9 @@ async function main() {
   console.log(seed1)
   const hdWallet = hdkey.fromMasterSeed(seed)
   console.log(hdWallet)
-  const hdPathString = "m/44'/60'/0'/0"
   var root = hdWallet.derivePath(hdPathString)
   const child = root.deriveChild(0)
+  console.log(child)
   const wallet = child.getWallet()
   console.log(wallet)
 

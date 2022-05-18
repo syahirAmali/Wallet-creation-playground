@@ -4,10 +4,12 @@ import BigNumberjs from "bignumber.js";
 import bip39 from "bip39";
 
 import pkg from 'ethereumjs-wallet';
+
 const { hdkey } = pkg;
+
 async function main() {
   let derivationPath = "m/44'/60'/0'/0";
-  const hdPathString = "m/44'/60'/0'/0"
+  const hdPathString = "m/44'/60'/0'/0";
 
   const mnemonic = bip39.generateMnemonic(256)
   console.log(mnemonic)

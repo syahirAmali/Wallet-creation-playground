@@ -5,14 +5,17 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@solana/web3.js": "^1.42.0",
     "axios": "^0.26.1",
     "bignumber.js": "^9.0.2",
     "bip32": "^3.0.1",
     "bip39": "^3.0.4",
     "bitcoinjs-lib": "^6.0.1",
+    "ed25519-hd-key": "^1.2.0",
     "ethereumjs-wallet": "^1.0.2",
     "ethers": "^5.6.2",
-    "tiny-secp256k1": "^2.2.1"
+    "tiny-secp256k1": "^2.2.1",
+    "xrpl": "^2.2.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

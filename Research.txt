@@ -1,0 +1,23 @@
+Hierarchical Deterministic (HD) Wallet
+
+- Can be classidied on how keys are generated
+    - non-Deterministic (random)
+    - Deterministic (seeded)
+
+- In random wallets, keys are randomly generated values, this is a problem when maintaining the wallet since the user will need to keep a backup copy of all the keys
+
+- This is where seeded wallet comes in, since keys are mathematically generated from a seed.
+
+- With that, only the seed needs to be backed up since the remaining keys can be retrieved from it.
+
+- HD wallets generate keys from the master key in a hierarchical manner following a tree.
+
+- For example, metamask uses HD wallets.
+
+- When connecting a HD wallet, wallets will use slightly different paths for connection.
+    - Each path will generate a completely new list of addresses, relative to your root private key.
+    - Ex. the general oath for ocnnection to the base Eth set of addesses looks like this m/44'/60'/0'/0'
+    - This seq is broken into m'/purpose'/coin_type'/account'/change/address_index
+
+
+
